@@ -2,14 +2,14 @@ import mysql.connector
 
 try:
     mydb = mysql.connector.connect(
-            host="localhost"
-            user="Daniel_Komolafe"
+            host="localhost",
+            user="Daniel_Komolafe",
             password="Deekay123$")
 
     cursor = mydb.cursor()
 
     cursor.execute("""
-            CREATE DATABASE IF NOT EXIST alx_book_store;
+            CREATE DATABASE IF NOT EXISTS alx_book_store;
             """)
     mydb.commit()
 
@@ -18,5 +18,5 @@ try:
     cursor.close()
     mydb.close()
 
-except Exception:
-    print("Error creating Database")
+except mysql.connector.Error as err:
+    print(f"Error creating Database {err}")
